@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thomas Popp — AI Image &amp; Video Generation | Portfolio</title>
+  <meta
+    name="description"
+    content="Selected AI image and video generation work by Thomas Popp — brand-aware prompt systems, consistent image libraries, identity-locked AI models, image-to-video, and faceless video at scale. MidJourney, Runway, and ChatGPT image pipelines."
+  />
+  <link rel="canonical" href="https://poppmediaagency.github.io/thomas-popp-portfolio/" />
+
+  <!-- Open Graph / social card -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Thomas Popp — AI Image &amp; Video Generation" />
+  <meta property="og:description" content="Brand-aware AI imagery and video — prompt systems that ship finished, on-brand assets, not one-off renders." />
+  <meta property="og:image" content="https://media.poppmedia.agency/studio/jobs/0ce7d8f0-3090-4649-873f-d68511ad169c/0ce7d8f0-3090-4649-873f-d68511ad169c.png" />
+  <meta property="og:url" content="https://poppmediaagency.github.io/thomas-popp-portfolio/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Inline favicon (TP monogram) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='4'%20fill='%231F2933'/%3E%3Cg%20fill='none'%20stroke='%23fff'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cline%20x1='4'%20y1='5.5'%20x2='18'%20y2='5.5'/%3E%3Cline%20x1='11'%20y1='4'%20x2='11'%20y2='28'/%3E%3Cpath%20d='M%2013.5%205.5%20C%2023%205.5%2023%2016%2013.5%2016'/%3E%3C/g%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="preconnect" href="https://media.poppmedia.agency" crossorigin="anonymous" />
+
+  <style>
+    /* ============================================================
+       Thomas Popp — personal brand portfolio.
+       Charcoal hero + TP monogram, Schibsted Grotesk display +
+       JetBrains Mono accents, electric blue / warm gold accents,
+       soft-gray cards. Fully self-contained, no build step.
+       ============================================================ */
+    :root {
+      --ink-900: #1f2933;
+      --ink-700: #3e4c59;
+      --ink-600: #4b5563;
+      --ink-500: #647084;
+      --ink-400: #9aa5b1;
+      --ink-200: #e4e7eb;
+      --ink-50: #f8fafc;
+      --white: #ffffff;
+      --blue-600: #2563eb;
+      --blue-700: #1d4ed8;
+      --gold-600: #a16207;
+
+      --font-display: 'Schibsted Grotesk', Arial, 'Helvetica Neue', sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+      --shadow-sm: 0 1px 3px rgba(31, 41, 51, 0.08), 0 1px 2px rgba(31, 41, 51, 0.04);
+      --shadow-md: 0 4px 12px rgba(31, 41, 51, 0.08), 0 1px 3px rgba(31, 41, 51, 0.05);
+      --shadow-lg: 0 12px 32px rgba(31, 41, 51, 0.12), 0 4px 10px rgba(31, 41, 51, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink-50);
+      color: var(--ink-900);
+      font-family: var(--font-display);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img, video { display: block; }
+
+    .band-inner,
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ── Hero ─────────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--ink-900);
+      color: #fff;
+      position: relative;
+      padding: 56px 0 52px;
+    }
+    .hero-rule {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-600) 0 64%, var(--gold-600) 64% 100%);
+    }
+    .hero-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .lockup {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .mono {
+      width: 46px;
+      height: 46px;
+      flex: none;
+    }
+    .lockup-t {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .lockup-t .name {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .lockup-t .role {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.62);
+      margin-top: 3px;
+    }
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.02em;
+    }
+    .hero-meta a { color: inherit; text-decoration: none; }
+    .hero-meta a:hover { color: #7aa7ff; }
+    .eyebrow {
+      margin: 40px 0 14px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7aa7ff;
+    }
+    .headline {
+      margin: 0;
+      max-width: 880px;
+      font-size: clamp(28px, 4.6vw, 50px);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 26px;
+    }
+    .stack .chip {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 5px 11px;
+      border-radius: 999px;
+    }
+
+    /* ── Bands ────────────────────────────────────────────────────────── */
+    .band {
+      padding: 54px 0;
+    }
+    .gallery-band {
+      background: var(--white);
+      border-top: 1px solid var(--ink-200);
+      border-bottom: 1px solid var(--ink-200);
+    }
+    .section-eyebrow {
+      margin: 0 0 22px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue-600);
+      font-weight: 600;
+    }
+
+    /* ── Tiles ────────────────────────────────────────────────────────── */
+    .tile {
+      margin: 0;
+      background: var(--white);
+      border: 1px solid var(--ink-200);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition:
+        transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 200ms ease;
+    }
+    .tile:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .media {
+      position: relative;
+      background: var(--ink-900);
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+    .tile.portrait .media {
+      aspect-ratio: 9 / 16;
+    }
+    .tile.square .media {
+      aspect-ratio: 1 / 1;
+    }
+    .media img,
+    .media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(31, 41, 51, 0.72);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    figcaption {
+      padding: 15px 17px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    figcaption h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink-900);
+    }
+    figcaption p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-600);
+    }
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 3px;
+    }
+    .tools span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.01em;
+      color: var(--ink-500);
+      background: var(--ink-50);
+      border: 1px solid var(--ink-200);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    /* Featured: a few larger tiles up top */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+    }
+
+    /* Masonry-ish responsive gallery */
+    .masonry {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+      align-items: start;
+    }
+
+    /* ── Capabilities ─────────────────────────────────────────────────── */
+    .cap-band {
+      background: var(--ink-50);
+    }
+    .caps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+    .cap {
+      background: var(--white);
+      border: 1px solid var(--ink-200);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      position: relative;
+    }
+    .cap-idx {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--blue-600);
+    }
+    .cap h3 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink-900);
+    }
+    .cap p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--ink-600);
+    }
+    .cap-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .cap-tags span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-500);
+      background: var(--ink-50);
+      border: 1px solid var(--ink-200);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    /* ── CTA ──────────────────────────────────────────────────────────── */
+    .cta-band {
+      background: var(--ink-900);
+      color: #fff;
+      padding: 48px 0;
+      position: relative;
+    }
+    .cta-band::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-600) 0 64%, var(--gold-600) 64% 100%);
+    }
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .cta-inner h2 {
+      margin: 0 0 8px;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .cta-inner p {
+      margin: 0;
+      max-width: 540px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.72);
+    }
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary,
+    .btn-ghost {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+    }
+    .btn-primary {
+      background: var(--blue-600);
+      color: #fff;
+      border: 1px solid var(--blue-600);
+    }
+    .btn-primary:hover { background: var(--blue-700); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.6); transform: translateY(-1px); }
+
+    /* ── Footer ───────────────────────────────────────────────────────── */
+    .foot {
+      background: var(--ink-900);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 26px 0 34px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .foot-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.02em;
+    }
+    .foot-inner a { color: rgba(255, 255, 255, 0.72); text-decoration: none; }
+    .foot-inner a:hover { color: #7aa7ff; }
+
+    @media (max-width: 640px) {
+      .hero { padding: 40px 0 38px; }
+      .band { padding: 40px 0; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <div class="lockup">
+          <svg class="mono" viewBox="0 0 120 120" aria-label="Thomas Popp monogram" role="img">
+            <g stroke="#FFFFFF" stroke-width="13" stroke-linecap="square" fill="none">
+              <path d="M27 33.5 H93" />
+              <path d="M60 33.5 V94" />
+              <path d="M60 33.5 A18.5 18.5 0 0 1 60 70.5" />
+            </g>
+          </svg>
+          <div class="lockup-t">
+            <span class="name">Thomas Popp</span>
+            <span class="role">AI Image &amp; Video Generation</span>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <span>Popp Media Agency</span>
+          <span>North Hollywood, CA</span>
+          <a href="mailto:thomas@poppsound.com">thomas@poppsound.com</a>
+        </div>
+      </div>
+
+      <p class="eyebrow">Generated portfolio</p>
+      <h1 class="headline">
+        Brand-aware AI imagery and video — prompt systems that ship finished,
+        on-brand assets, not one-off renders.
+      </h1>
+
+      <div class="stack">
+        <span class="chip">MidJourney</span>
+        <span class="chip">Runway</span>
+        <span class="chip">Image-to-Video</span>
+        <span class="chip">ChatGPT image</span>
+        <span class="chip">Faceless reels</span>
+      </div>
+    </div>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <!-- ── FEATURED ─────────────────────────────────────────────────────── -->
+  <section class="band">
+    <div class="band-inner">
+      <p class="section-eyebrow">Selected work</p>
+      <div class="feature-grid" id="featured-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ──────────────────────────────────────────────────────── -->
+  <section class="band gallery-band">
+    <div class="band-inner">
+      <p class="section-eyebrow">Gallery</p>
+      <div class="masonry" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── CAPABILITIES ─────────────────────────────────────────────────── -->
+  <section class="band cap-band">
+    <div class="band-inner">
+      <p class="section-eyebrow">Capabilities</p>
+      <div class="caps" id="caps-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────────────────────── -->
+  <section class="cta-band">
+    <div class="band-inner cta-inner">
+      <div>
+        <h2>Built with brand-aware generation pipelines.</h2>
+        <p>
+          Every asset above came out of a system designed to render consistent,
+          on-brand imagery and video at scale — not a one-off prompt.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn-primary" href="https://poppmedia.agency">See agency work</a>
+        <a class="btn-ghost" href="mailto:thomas@poppsound.com">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <span>Thomas Popp — AI Image &amp; Video Generation</span>
+      <span><a href="mailto:thomas@poppsound.com">thomas@poppsound.com</a> · <a href="https://poppmedia.agency">poppmedia.agency</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // ── Curated assets (embedded; media on media.poppmedia.agency CDN) ──
+    var GALLERY = [
+      { kind: 'video', src: 'https://media.poppmedia.agency/studio/jobs/c5fbc1cc-eed0-4bde-a4ca-066fe0a28e05/runway-i2v-1781376883442-vertical.mp4', title: 'Pool Care — Image-to-Video Drift', caption: 'Directed a still pool-care image into a 9:16 motion clip — gentle pan-and-zoom drift with subtle ambient motion, photoreal 24fps film look, no warped people or text.', tools: ['Runway (image-to-video)', 'Nano Banana still'], aspect: 'portrait', feature: true },
+      { kind: 'video', src: 'https://media.poppmedia.agency/studio/deliverables/citywide-pools-la/commercial-001-citywide-pools-la-song.mp4', title: 'Citywide Pools — Branded Commercial', caption: 'End-to-end generated commercial: an AI image set animated to motion, cut to an original track, and composited with brand framing and end-card — a finished client deliverable.', tools: ['Runway', 'Image-to-Video', 'Suno', 'Brand composite'], aspect: 'landscape', feature: true },
+      { kind: 'video', src: 'https://media.poppmedia.agency/web-poster/campaigns/pm-tech/multi-cut/c6de2f2c-114a-4f47-bc75-d5bec09ce2a3/d058959e-shot0.mp4', title: 'PM Tech — Multi-Cut Spot', caption: 'Generated a multi-shot video spot from a beat-sheet: each beat prompted, rendered, and stitched into a continuous narrative cut for a paid social campaign.', tools: ['Runway (text-to-video)', 'Beat-sheet prompting', 'Multi-cut stitch'], aspect: 'landscape', feature: true },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/0ce7d8f0-3090-4649-873f-d68511ad169c/0ce7d8f0-3090-4649-873f-d68511ad169c.png', title: 'Pool Care — Editorial Still', caption: 'Brand-consistent editorial photography from a templated prompt system: "candid editorial photograph, sun-drenched Southern California backyard pool" — the same look across an entire image set.', tools: ['MidJourney', 'Prompt template system'], aspect: 'landscape', feature: true },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/e848034f-23b4-4d83-8701-068d3955f3a3/e848034f-23b4-4d83-8701-068d3955f3a3.png', title: 'Hidden Chemical Load — Concept Still', caption: 'A photoreal editorial image that concretely illustrates an abstract idea (dust adding a chemical load to a pool) — prompt-engineered to render a clear, on-topic concept, not a generic stock scene.', tools: ['Runway (Nano Banana)', 'Concept prompting'], aspect: 'landscape' },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/48611221-d8af-40b3-8ad2-c2687715e775/48611221-d8af-40b3-8ad2-c2687715e775.webp', title: 'Weekly Brushing — 4:3 Editorial', caption: 'Aspect-targeted generation (4:3) tuned for a blog body slot, holding the brand’s editorial photographic style while changing subject matter per article section.', tools: ['Runway (Nano Banana)', 'Aspect-targeted prompts'], aspect: 'landscape' },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/36230ebc-3562-4e36-b676-9064ba16fc5a/36230ebc-3562-4e36-b676-9064ba16fc5a-branded.png', title: 'Pool Service — Branded Hero', caption: 'A generated hero image taken through the brand-composite step — logo and treatment layered onto the AI render so the output ships as a finished, on-brand asset.', tools: ['MidJourney', 'Brand composite overlay'], aspect: 'landscape' },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/58972e75-dc9a-4df7-b438-96b62cf6f3cf/58972e75-dc9a-4df7-b438-96b62cf6f3cf.png', title: 'Water Chemistry — Editorial Still', caption: 'Another frame from the same consistent visual library — proof the prompt system can produce dozens of distinct, on-topic images that still read as one coherent brand.', tools: ['MidJourney', 'Visual library system'], aspect: 'landscape' },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/02c1f2a5-9c99-4997-b549-359c6f3a895d/02c1f2a5-9c99-4997-b549-359c6f3a895d.png', title: 'AI Model "Henry" — Studio Headshot', caption: 'Built a reusable AI spokesmodel with a locked identity: an authoritative 40s studio headshot, three-point lighting, neutral backdrop — the anchor frame for a face-consistent model.', tools: ['ChatGPT image', 'Identity-lock prompting'], aspect: 'portrait' },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/de67ec2d-54bd-43ca-8f35-730e6e64eb66/de67ec2d-54bd-43ca-8f35-730e6e64eb66.png', title: 'AI Model "Henry" — Identity Hold', caption: 'Same face, new scene: an identity-lock prompt that preserves bone structure and skin tone across generations so one AI model can carry an entire campaign.', tools: ['ChatGPT image', 'Reference + identity-lock'], aspect: 'portrait' },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/2193df55-b2b3-4cb8-88ea-390a62b0cd50/2193df55-b2b3-4cb8-88ea-390a62b0cd50.png', title: 'PoppDesk — 16:9 Editorial Banner', caption: 'A photoreal editorial commercial image framed 16:9 for a LinkedIn banner / X media card — one concept rendered across multiple platform aspect ratios from a single brief.', tools: ['ChatGPT image', 'Platform-aspect system'], aspect: 'landscape' },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/3bedc3a1-bef4-4a22-b92e-d1d218a2b713/3bedc3a1-bef4-4a22-b92e-d1d218a2b713.png', title: 'PoppDesk — Editorial Brand Still', caption: 'A clean, on-brand editorial frame generated for feed and banner use — demonstrating tight art-direction control over lighting, composition, and mood via prompt alone.', tools: ['ChatGPT image', 'Art-direction prompting'], aspect: 'landscape' },
+      { kind: 'video', src: 'https://media.poppmedia.agency/studio/jobs/619df7db-bb90-41f4-867f-611ad6990bdf/mixed-hf.mp4', title: 'Faceless Reel — Auto-Assembled', caption: 'A faceless short-form reel assembled from generated stills with Ken-Burns motion and on-frame captions — built to publish at scale with zero per-clip render spend.', tools: ['Faceless reel engine', 'Ken Burns', 'Caption burn-in'], aspect: 'portrait' },
+      { kind: 'video', src: 'https://media.poppmedia.agency/studio/jobs/fb40365d-e792-40e7-b533-4fc81e9757a6/fb40365d-e792-40e7-b533-4fc81e9757a6-v0.mp4', title: 'Stormy Interior — Motion Tilt', caption: 'Image-to-video with a directed camera move: a slow upward tilt revealing a warm glowing interior against a dark sky, with volumetric god-rays — motion prompting for a cinematic feel.', tools: ['Runway (image-to-video)', 'Motion prompting'], aspect: 'landscape' },
+      { kind: 'image', src: 'https://media.poppmedia.agency/studio/jobs/carousel-How-Alcohol-Food-and-Trash-Affect-Pool-Cleanliness-2026-06-0-0-c15369765eb3d6c9/slide-c15369765eb3d6c9.png', title: 'Social Carousel — Generated Slide', caption: 'A square carousel slide generated and laid out as part of a multi-slide social pack — one blog fans out into platform-native carousels, stories, and posts automatically.', tools: ['MidJourney', 'Carousel layout system'], aspect: 'square' },
+      { kind: 'video', src: 'https://media.poppmedia.agency/reel-test/reel-final-e307b211.mp4', title: 'Waterfalls — Stitched Reel', caption: 'Multiple generated motion clips stitched into a single finished reel — testing the assembly pipeline that turns a batch of renders into one continuous, publish-ready video.', tools: ['Runway', 'Reel stitch pipeline'], aspect: 'portrait' }
+    ];
+
+    var CAPABILITIES = [
+      { index: '01', title: 'Prompt Systems', description: 'Templated, reusable prompt architectures that hold a single look across hundreds of generations — concept, aspect ratio, and brand style controlled by parameters, not luck.', tags: ['MidJourney', 'Runway', 'ChatGPT', 'Concept prompting'] },
+      { index: '02', title: 'Brand-Consistent Image Libraries', description: 'Whole visual libraries per client: dozens of distinct, on-topic editorial images that still read as one coherent brand, then composited with logo and treatment.', tags: ['Visual libraries', 'Brand composite', 'Multi-aspect'] },
+      { index: '03', title: 'Image-to-Video & Motion', description: 'Directed camera moves on generated stills — drift, tilt, god-rays — plus multi-cut spots assembled from beat-sheets into finished, publish-ready video.', tags: ['Runway i2v', 'Motion prompting', 'Multi-cut'] },
+      { index: '04', title: 'Faceless Video at Scale', description: 'Auto-assembled faceless reels with Ken-Burns motion, caption burn-in, and brand framing — built to publish across platforms with minimal render spend.', tags: ['Faceless reels', 'Caption burn-in', 'Auto-assembly'] }
+    ];
+
+    function esc(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function tileHTML(item) {
+      var classes = 'tile';
+      if (item.aspect === 'portrait') classes += ' portrait';
+      if (item.aspect === 'square') classes += ' square';
+      var mediaInner;
+      if (item.kind === 'video') {
+        mediaInner =
+          '<video src="' + esc(item.src) + '" muted loop autoplay playsinline preload="metadata"></video>' +
+          '<span class="badge">Video</span>';
+      } else {
+        mediaInner =
+          '<img src="' + esc(item.src) + '" alt="' + esc(item.title) + '" loading="lazy" decoding="async" />';
+      }
+      var toolsHTML = item.tools.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
+      return (
+        '<figure class="' + classes + '">' +
+          '<div class="media">' + mediaInner + '</div>' +
+          '<figcaption>' +
+            '<h3>' + esc(item.title) + '</h3>' +
+            '<p>' + esc(item.caption) + '</p>' +
+            '<div class="tools">' + toolsHTML + '</div>' +
+          '</figcaption>' +
+        '</figure>'
+      );
+    }
+
+    function capHTML(cap) {
+      var tags = cap.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
+      return (
+        '<div class="cap">' +
+          '<span class="cap-idx">' + esc(cap.index) + '</span>' +
+          '<h3>' + esc(cap.title) + '</h3>' +
+          '<p>' + esc(cap.description) + '</p>' +
+          '<div class="cap-tags">' + tags + '</div>' +
+        '</div>'
+      );
+    }
+
+    var featured = GALLERY.filter(function (g) { return g.feature; });
+    var rest = GALLERY.filter(function (g) { return !g.feature; });
+
+    document.getElementById('featured-grid').innerHTML = featured.map(tileHTML).join('');
+    document.getElementById('gallery-grid').innerHTML = rest.map(tileHTML).join('');
+    document.getElementById('caps-grid').innerHTML = CAPABILITIES.map(capHTML).join('');
+  </script>
+</body>
+</html>
